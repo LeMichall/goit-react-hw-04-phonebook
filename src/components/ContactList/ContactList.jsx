@@ -1,5 +1,6 @@
 import React from 'react';
 import css from './ContactList.module.css';
+import PropTypes from 'prop-types';
 export const ContactList = ({ contacts, removeContact }) => {
   return (
     <div className={css.contactListWrapper}>
@@ -18,4 +19,13 @@ export const ContactList = ({ contacts, removeContact }) => {
       </ul>
     </div>
   );
+};
+ContactList.propTypes = {
+  contacts: PropTypes.arrayOf(
+    PropTypes.shape({
+      name: PropTypes.string,
+      number: PropTypes.string,
+    })
+  ),
+  removeContact: PropTypes.func,
 };
