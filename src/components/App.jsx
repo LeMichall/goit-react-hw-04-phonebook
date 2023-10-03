@@ -21,8 +21,11 @@ export class App extends Component {
     }
   }
 
-  componentDidUpdate() {
-    localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.contacts !== this.state.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
+      console.log('changed');
+    }
   }
   setFilter = e => {
     this.setState({ filter: e.target.value });
